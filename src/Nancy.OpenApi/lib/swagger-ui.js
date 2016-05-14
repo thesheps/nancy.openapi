@@ -25135,7 +25135,7 @@ SwaggerUi.Views.MainView = Backbone.View.extend({
         this.model.validatorUrl = 'https://online.swagger.io/validator';
       }
       else {
-        this.model.validatorUrl = 'http://online.swagger.io/validator';
+        this.model.validatorUrl = undefined;
       }
     }
 

@@ -108,7 +108,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\OpenApiBooststrapper.cs" />
+    <Compile Include="Models\ContactObject.cs" />
+    <Compile Include="Models\DefinitionsObject.cs" />
+    <Compile Include="Models\ExampleObject.cs" />
+    <Compile Include="Models\ExternalDocsObject.cs" />
+    <Compile Include="Models\HeaderObject.cs" />
+    <Compile Include="Models\HeadersObject.cs" />
+    <Compile Include="Models\InfoObject.cs" />
+    <Compile Include="Models\ItemsObject.cs" />
+    <Compile Include="Models\LicenseObject.cs" />
+    <Compile Include="Models\OperationObject.cs" />
+    <Compile Include="Models\ParameterObject.cs" />
+    <Compile Include="Models\ParametersDefinitionsObject.cs" />
+    <Compile Include="Models\PathItemObject.cs" />
+    <Compile Include="Models\PathsObject.cs" />
+    <Compile Include="Models\PropertyObject.cs" />
+    <Compile Include="Models\ResponseObject.cs" />
+    <Compile Include="Models\ResponsesDefinitionsObject.cs" />
+    <Compile Include="Models\ResponsesObject.cs" />
+    <Compile Include="Models\SchemaObject.cs" />
+    <Compile Include="Models\SecurityDefinitionsObject.cs" />
+    <Compile Include="Models\SecurityRequirementObject.cs" />
+    <Compile Include="Models\SwaggerObject.cs" />
+    <Compile Include="Models\TagObject.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fonts\DroidSans-Bold.ttf" />
