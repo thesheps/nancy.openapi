@@ -9,7 +9,7 @@ namespace Nancy.OpenApi.Modules
         public OpenApiModule()
         {
             Get["/api-docs"] = p => View["Index"];
-            Get["/api-specs"] = p => GetDocumentation();
+            Get["/swagger.json"] = p => GetDocumentation();
         }
 
         private static Response GetDocumentation()

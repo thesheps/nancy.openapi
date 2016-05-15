@@ -107,7 +107,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\OpenApiBooststrapper.cs" />
+    <Compile Include="Infrastructure\OpenApiBootstrapper.cs" />
     <Compile Include="Models\ContactObject.cs" />
     <Compile Include="Models\DefinitionsObject.cs" />
     <Compile Include="Models\ExampleObject.cs" />
