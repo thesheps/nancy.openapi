@@ -131,8 +131,10 @@
     <Compile Include="Models\SecurityRequirementObject.cs" />
     <Compile Include="Models\SwaggerObject.cs" />
     <Compile Include="Models\TagObject.cs" />
-    <Compile Include="Infrastructure\IApiDocumentation.cs" />
+    <Compile Include="Infrastructure\IApiDescription.cs" />
+    <Compile Include="Modules\SwaggerGenerator.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
+    <Compile Include="Mappers\SwaggerMapper.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -193,6 +195,9 @@
     <EmbeddedResource Include="views\o2c.html" />
     <EmbeddedResource Include="lib\swagger-ui.js" />
     <EmbeddedResource Include="lib\swagger-ui.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="views\missingcomponent.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

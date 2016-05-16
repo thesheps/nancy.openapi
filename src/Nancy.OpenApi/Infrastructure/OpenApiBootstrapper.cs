@@ -34,7 +34,11 @@ namespace Nancy.OpenApi.Infrastructure
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
             base.ConfigureApplicationContainer(container);
-            ResourceViewLocationProvider.RootNamespaces.Add(typeof(OpenApiModule).Assembly, "Nancy.OpenApi.views");
+
+            var assembly = typeof(OpenApiModule).Assembly;
+
+            if (!ResourceViewLocationProvider.RootNamespaces.ContainsKey(assembly))
+                ResourceViewLocationProvider.RootNamespaces.Add(assembly, "Nancy.OpenApi.views");
         }
 
         private static void MapResourcesFromAssembly(NancyConventions conventions, Assembly assembly)

@@ -1,64 +1,36 @@
-﻿using System;
-using Nancy.OpenApi.Infrastructure;
-using Nancy.OpenApi.Models;
-using Nancy.Routing;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Nancy.OpenApi.Modules
 {
     public class OpenApiModule : NancyModule
     {
-        public OpenApiModule(IRouteCacheProvider routeCacheProvider, IApiDocumentation apiDocumentation)
+        public OpenApiModule()
         {
-            _routeCacheProvider = routeCacheProvider;
-            _apiDocumentation = apiDocumentation;
-
-            Get["/api-docs"] = p => View["Index"];
-            Get["/swagger.json"] = p => GetDocumentation();
+            Get["/api-docs"] = p => View["MissingComponent"];
         }
 
-        private Response GetDocumentation()
+        public OpenApiModule(ISwaggerGenerator swaggerGenerator)
         {
-            var response = (Response)JsonConvert.SerializeObject(GetSwagger(), new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+            _swaggerGenerator = swaggerGenerator;
+
+            Get["/api-docs"] = p => View["Index"];
+            Get["/swagger.json"] = p => GetSpecification();
+        }
+
+        private Response GetSpecification()
+        {
+            var response = (Response)JsonConvert.SerializeObject(_swaggerGenerator.Generate(), new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
             response.ContentType = "application/json";
 
             return response;
         }
 
-        private SwaggerObject GetSwagger()
-        {
-            var routeCache = _routeCacheProvider.GetCache();
-
-            foreach (var routeInfo in routeCache)
-            {
-                Console.WriteLine(routeInfo);
-            }
-
-            return new SwaggerObject
-            {
-                Info = new InfoObject
-                {
-                    Title = _apiDocumentation.Title,
-                    Description = _apiDocumentation.Description,
-                    Contact = new ContactObject
-                    {
-                        Email = _apiDocumentation.Email,
-                        Name = _apiDocumentation.Name,
-                        Url = _apiDocumentation.Url
-                    },
-                    Licence = new LicenceObject
-                    {
-                        Name = _apiDocumentation.LicenseName,
-                        Url = _apiDocumentation.LicenseUrl
-                    },
-                    TermsOfService = _apiDocumentation.TermsOfService,
-                    Version = _apiDocumentation.Version
-                }
-            };
-        }
-
-        private readonly IRouteCacheProvider _routeCacheProvider;
-        private readonly IApiDocumentation _apiDocumentation;
+        private readonly ISwaggerGenerator _swaggerGenerator;
     }
 }

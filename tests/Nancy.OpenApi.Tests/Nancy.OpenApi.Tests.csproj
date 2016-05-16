@@ -61,9 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fakes\FakeApiDescription.cs" />
+    <Compile Include="Fakes\FakeModule.cs" />
     <Compile Include="GivenOpenApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
