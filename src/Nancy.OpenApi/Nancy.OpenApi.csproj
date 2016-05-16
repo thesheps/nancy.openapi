@@ -131,6 +131,7 @@
     <Compile Include="Models\SecurityRequirementObject.cs" />
     <Compile Include="Models\SwaggerObject.cs" />
     <Compile Include="Models\TagObject.cs" />
+    <Compile Include="Infrastructure\IApiDocumentation.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
