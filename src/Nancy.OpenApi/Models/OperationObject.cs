@@ -10,5 +10,12 @@ namespace Nancy.OpenApi.Models
         public string Summary { get; set; }
         public string Description { get; set; }
         public string OperationId { get; set; }
+
+        public OperationObject()
+        {
+            Tags = new List<string>();
+            Consumes = new List<string>();
+            Produces = new List<string>();
+        }
     }
 }

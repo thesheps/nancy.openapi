@@ -6,5 +6,12 @@ namespace Nancy.OpenApi.Models
         public SchemaObject Schema { get; set; }
         public HeadersObject Headers { get; set; }
         public ExampleObject Examples { get; set; }
+
+        public ResponseObject()
+        {
+            Schema = new SchemaObject();
+            Headers = new HeadersObject();
+            Examples = new ExampleObject();
+        }
     }
 }

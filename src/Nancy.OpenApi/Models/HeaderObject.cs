@@ -6,5 +6,10 @@ namespace Nancy.OpenApi.Models
         public string Type { get; set; }
         public string Format { get; set; }
         public ItemsObject Items { get; set; }
+
+        public HeaderObject()
+        {
+            Items = new ItemsObject();
+        }
     }
 }

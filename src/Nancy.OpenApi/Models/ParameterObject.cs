@@ -7,5 +7,10 @@ namespace Nancy.OpenApi.Models
         public string Description { get; set; }
         public bool Required { get; set; }
         public SchemaObject Schema { get; set; }
+
+        public ParameterObject()
+        {
+            Schema = new SchemaObject();
+        }
     }
 }

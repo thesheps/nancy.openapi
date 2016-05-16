@@ -8,5 +8,10 @@ namespace Nancy.OpenApi.Models
         public string Type { get; set; }
         public string Description { get; set; }
         public List<string> Enum { get; set; }
+
+        public PropertyObject()
+        {
+            Enum = new List<string>();
+        }
     }
 }

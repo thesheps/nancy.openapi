@@ -12,5 +12,11 @@ namespace Nancy.OpenApi.Models
         public OperationObject Head { get; set; }
         public OperationObject Patch { get; set; }
         public List<ParameterObject> Parameters { get; set; }
+        public string Path { get; set; }
+
+        public PathItemObject()
+        {
+            Parameters = new List<ParameterObject>();
+        }
     }
 }
