@@ -17,6 +17,7 @@ if "%nuget%" == "" (
 
 REM Restore
 call %NuGet% restore src\Nancy.OpenApi\packages.config -OutputDirectory %cd%\packages -NonInteractive
+call %NuGet% restore src\Nancy.OpenApi.WebHost\packages.config -OutputDirectory %cd%\packages -NonInteractive
 call %NuGet% restore tests\Nancy.OpenApi.Tests\packages.config -OutputDirectory %cd%\packages -NonInteractive
 
 REM Build
