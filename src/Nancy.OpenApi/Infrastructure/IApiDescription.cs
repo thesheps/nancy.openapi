@@ -15,5 +15,7 @@ namespace Nancy.OpenApi.Infrastructure
         string LicenseUrl { get; }
         string TermsOfService { get; }
         string Version { get; }
+        string ExternalDocsDescription { get; }
+        string ExternalDocsUrl { get; }
     }
 }

@@ -132,18 +132,9 @@
     <Compile Include="Models\SwaggerObject.cs" />
     <Compile Include="Models\TagObject.cs" />
     <Compile Include="Infrastructure\IApiDescription.cs" />
-    <Compile Include="Modules\SwaggerGenerator.cs" />
+    <Compile Include="Infrastructure\SwaggerGenerator.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
     <Compile Include="Mappers\SwaggerMapper.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="app.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fonts\DroidSans-Bold.ttf" />

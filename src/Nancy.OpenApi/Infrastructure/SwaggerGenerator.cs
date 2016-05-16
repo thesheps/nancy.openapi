@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Nancy.OpenApi.Infrastructure;
 using Nancy.OpenApi.Mappers;
 using Nancy.OpenApi.Models;
+using Nancy.OpenApi.Modules;
 using Nancy.Routing;
 
-namespace Nancy.OpenApi.Modules
+namespace Nancy.OpenApi.Infrastructure
 {
     public interface ISwaggerGenerator
     {
@@ -33,25 +33,30 @@ namespace Nancy.OpenApi.Modules
 
                 foreach (var route in lookup.ToList())
                 {
+                    var operationObject = new OperationObject
+                    {
+                        Description = route.Description,
+                    };
+
                     switch (route.Method)
                     {
                         case "GET":
-                            pathItem.Get = new OperationObject { Description = route.Description };
+                            pathItem.Get = operationObject;
                             break;
                         case "POST":
-                            pathItem.Post = new OperationObject { Description = route.Description };
+                            pathItem.Post = operationObject;
                             break;
                         case "PUT":
-                            pathItem.Put = new OperationObject { Description = route.Description };
+                            pathItem.Put = operationObject;
                             break;
                         case "DELETE":
-                            pathItem.Delete = new OperationObject { Description = route.Description };
+                            pathItem.Delete = operationObject;
                             break;
                         case "PATCH":
-                            pathItem.Patch = new OperationObject { Description = route.Description };
+                            pathItem.Patch = operationObject;
                             break;
                         case "OPTIONS":
-                            pathItem.Options = new OperationObject { Description = route.Description };
+                            pathItem.Options = operationObject;
                             break;
                     }
                 }

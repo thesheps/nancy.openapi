@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Nancy.OpenApi.Infrastructure;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Nancy.OpenApi.Modules
@@ -20,7 +21,8 @@ namespace Nancy.OpenApi.Modules
 
         private Response GetSpecification()
         {
-            var response = (Response)JsonConvert.SerializeObject(_swaggerGenerator.Generate(), new JsonSerializerSettings
+            var swaggerObject = _swaggerGenerator.Generate();
+            var response = (Response)JsonConvert.SerializeObject(swaggerObject, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 NullValueHandling = NullValueHandling.Ignore

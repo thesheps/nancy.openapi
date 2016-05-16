@@ -13,5 +13,7 @@ namespace Nancy.OpenApi.Tests.Fakes
         public string LicenseUrl => "https://raw.githubusercontent.com/thesheps/nancy.openapi/master/LICENSE";
         public string TermsOfService => "In turpis nunc, vestibulum ac neque quis, lobortis convallis metus. Sed feugiat orci id augue mattis, sit amet consectetur metus porta.";
         public string Version => "1.0";
+        public string ExternalDocsDescription => "Wiki community article";
+        public string ExternalDocsUrl => "www.testdocs";
     }
 }

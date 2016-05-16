@@ -9,6 +9,11 @@ namespace Nancy.OpenApi.Mappers
         {
             return new SwaggerObject
             {
+                ExternalDocs = new ExternalDocsObject
+                {
+                    Description  = apiDescription.ExternalDocsDescription,
+                    Url = apiDescription.ExternalDocsUrl
+                },
                 Info = new InfoObject
                 {
                     Title = apiDescription.Title,

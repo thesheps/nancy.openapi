@@ -16,5 +16,7 @@ namespace Nancy.OpenApi.WebHost
         public string LicenseUrl => Resources.LicenseUrl;
         public string TermsOfService => Resources.TermsOfService;
         public string Version => Resources.Version;
+        public string ExternalDocsDescription => Resources.ExternalDocsDescription;
+        public string ExternalDocsUrl => Resources.ExternalDocsUrl;
     }
 }

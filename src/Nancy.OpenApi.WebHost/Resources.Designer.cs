@@ -97,6 +97,24 @@ namespace Nancy.OpenApi.WebHost {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to External community wiki article.
+        /// </summary>
+        internal static string ExternalDocsDescription {
+            get {
+                return ResourceManager.GetString("ExternalDocsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to www.wikiarticle.com.
+        /// </summary>
+        internal static string ExternalDocsUrl {
+            get {
+                return ResourceManager.GetString("ExternalDocsUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MIT.
         /// </summary>
         internal static string LicenseName {
