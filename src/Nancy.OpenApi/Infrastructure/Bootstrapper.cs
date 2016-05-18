@@ -12,7 +12,7 @@ using Nancy.ViewEngines;
 
 namespace Nancy.OpenApi.Infrastructure
 {
-    public class OpenApiBootstrapper : DefaultNancyBootstrapper
+    public class Bootstrapper : DefaultNancyBootstrapper
     {
         protected override IRootPathProvider RootPathProvider => new AspNetRootPathProvider();
 

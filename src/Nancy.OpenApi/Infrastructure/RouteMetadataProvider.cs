@@ -5,22 +5,25 @@ using Nancy.TinyIoc;
 
 namespace Nancy.OpenApi.Infrastructure
 {
-    public class OpenApiRouteMetadataProvider : IRouteMetadataProvider
+    /// <summary>
+    /// Automatically resolves route metadata instances.
+    /// </summary>
+    public class RouteMetadataProvider : IRouteMetadataProvider
     {
-        public OpenApiRouteMetadataProvider(TinyIoCContainer container)
+        public RouteMetadataProvider(TinyIoCContainer container)
         {
             _container = container;
         }
 
         public Type GetMetadataType(INancyModule module, RouteDescription routeDescription)
         {
-            return typeof(OpenApiRouteMetadata);
+            return typeof(PathMetadata);
         }
 
         public object GetMetadata(INancyModule module, RouteDescription routeDescription)
         {
             var type = GetModuleMetadataType(module);
-            var moduleMetadata = (OpenApiModuleMetadata)(type == null ? null : _container.Resolve(type));
+            var moduleMetadata = (ModuleMetadata)(type == null ? null : _container.Resolve(type));
 
             return moduleMetadata?[routeDescription.Method, routeDescription.Path];
         }
@@ -32,7 +35,7 @@ namespace Nancy.OpenApi.Infrastructure
                                 .SelectMany(x => x.GetTypes())
                                 .FirstOrDefault(x => x.Name == metadataModuleName);
 
-            return typeof(OpenApiModuleMetadata).IsAssignableFrom(type) ? type : null;
+            return typeof(ModuleMetadata).IsAssignableFrom(type) ? type : null;
         }
 
         private readonly TinyIoCContainer _container;

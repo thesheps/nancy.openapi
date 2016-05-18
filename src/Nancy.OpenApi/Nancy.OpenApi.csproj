@@ -107,10 +107,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\OpenApiModuleMetadata.cs" />
-    <Compile Include="Infrastructure\OpenApiRouteMetadata.cs" />
-    <Compile Include="Infrastructure\OpenApiBootstrapper.cs" />
-    <Compile Include="Infrastructure\OpenApiRouteMetadataProvider.cs" />
+    <Compile Include="Infrastructure\ModuleMetadata.cs" />
+    <Compile Include="Infrastructure\PathMetadata.cs" />
+    <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\RouteMetadataProvider.cs" />
     <Compile Include="Mappers\RouteMapper.cs" />
     <Compile Include="Models\ContactObject.cs" />
     <Compile Include="Models\DefinitionsObject.cs" />

@@ -2,7 +2,10 @@
 
 namespace Nancy.OpenApi.Infrastructure
 {
-    public class OpenApiRouteMetadata
+    /// <summary>
+    /// Create implementations of this class in order to add metadata to an existing Nancy route/path.
+    /// </summary>
+    public class PathMetadata
     {
         public string OperationId { get; set; }
         public string Description { get; set; }

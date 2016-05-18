@@ -3,9 +3,9 @@ using Nancy.OpenApi.Infrastructure;
 
 namespace Nancy.OpenApi.Tests.Fakes
 {
-    public class FakeMetadata : OpenApiModuleMetadata
+    public class FakeMetadata : ModuleMetadata
     {
-        public OpenApiRouteMetadata PostMetadata = new OpenApiRouteMetadata
+        public PathMetadata PostMetadata = new PathMetadata
         {
             OperationId = "addTest",
             Summary = "Add a test object",

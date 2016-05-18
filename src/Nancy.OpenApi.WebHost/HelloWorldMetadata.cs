@@ -3,9 +3,9 @@ using Nancy.OpenApi.Infrastructure;
 
 namespace Nancy.OpenApi.WebHost
 {
-    public class HelloWorldMetadata : OpenApiModuleMetadata
+    public class HelloWorldMetadata : ModuleMetadata
     {
-        public OpenApiRouteMetadata PostMetadata = new OpenApiRouteMetadata
+        public PathMetadata PostMetadata = new PathMetadata
         {
             OperationId = "addTest",
             Summary = "Add a test object",

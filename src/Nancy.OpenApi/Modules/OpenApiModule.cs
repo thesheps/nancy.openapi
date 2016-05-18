@@ -39,7 +39,7 @@ namespace Nancy.OpenApi.Modules
 
                 foreach (var route in routeDescription.ToList())
                 {
-                    var metadata = route.Metadata.Retrieve<OpenApiRouteMetadata>();
+                    var metadata = route.Metadata.Retrieve<PathMetadata>();
                     var operationObject = metadata?.ToOperationObject();
 
                     if (operationObject != null)
