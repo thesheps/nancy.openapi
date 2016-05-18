@@ -23,7 +23,7 @@ namespace Nancy.OpenApi.Tests
         {
             var browser = new Browser(new OpenApiBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
-            var specs = JsonConvert.DeserializeObject<SwaggerObject>(response.Body.AsString());
+            var specs = JsonConvert.DeserializeObject<Models.SwaggerObject>(response.Body.AsString());
 
             Assert.That(specs, Is.Not.Null);
             Assert.That(specs.Swagger, Is.EqualTo("2.0"));
@@ -34,7 +34,8 @@ namespace Nancy.OpenApi.Tests
         {
             var browser = new Browser(new OpenApiBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
-            var specs = JsonConvert.DeserializeObject<SwaggerObject>(response.Body.AsString());
+            var specs = JsonConvert.DeserializeObject<Models.SwaggerObject>(response.Body.AsString());
+            var path = specs.Paths["/api/test"];
 
             Assert.That(specs, Is.Not.Null);
             Assert.That(specs.Swagger, Is.EqualTo("2.0"));
@@ -47,9 +48,14 @@ namespace Nancy.OpenApi.Tests
             Assert.That(specs.Info.TermsOfService, Is.EqualTo(_apiDescription.TermsOfService));
             Assert.That(specs.Info.Title, Is.EqualTo(_apiDescription.Title));
             Assert.That(specs.Info.Version, Is.EqualTo(_apiDescription.Version));
-            Assert.That(specs.Paths.ContainsKey("/api/test"));
+
+            Assert.That(path, Is.Not.Null);
+            Assert.That(path["post"].Description, Is.EqualTo(_metadata.PostMetadata.Description));
+            Assert.That(path["post"].Summary, Is.EqualTo(_metadata.PostMetadata.Summary));
+            Assert.That(path["post"].OperationId, Is.EqualTo(_metadata.PostMetadata.OperationId));
         }
 
         private readonly IApiDescription _apiDescription = new FakeApiDescription();
+        private readonly FakeMetadata _metadata = new FakeMetadata();
     }
 }

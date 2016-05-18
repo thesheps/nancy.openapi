@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Nancy.OpenApi.Infrastructure;
 
-namespace Nancy.OpenApi.WebHost
+namespace Nancy.OpenApi.Tests.Fakes
 {
-    public class HelloWorldMetadata : OpenApiModuleMetadata
+    public class FakeMetadata : OpenApiModuleMetadata
     {
         public OpenApiRouteMetadata PostMetadata = new OpenApiRouteMetadata
         {
@@ -14,9 +14,9 @@ namespace Nancy.OpenApi.WebHost
             Tags = new List<string> { "Test" }
         };
 
-        public HelloWorldMetadata()
+        public FakeMetadata()
         {
-            Post["/api/helloWorld"] = PostMetadata;
+            Post["/api/test"] = PostMetadata;
         }
     }
 }

@@ -3,9 +3,9 @@ using Nancy.OpenApi.Models;
 
 namespace Nancy.OpenApi.Mappers
 {
-    public static class SwaggerMapper
+    public static class ApiMapper
     {
-        public static SwaggerObject ToSwagger(this IApiDescription apiDescription)
+        public static SwaggerObject ToSwaggerObject(this IApiDescription apiDescription)
         {
             return new SwaggerObject
             {

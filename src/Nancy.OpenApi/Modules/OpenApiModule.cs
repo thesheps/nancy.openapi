@@ -1,4 +1,8 @@
-﻿using Nancy.OpenApi.Infrastructure;
+﻿using System.Linq;
+using Nancy.OpenApi.Infrastructure;
+using Nancy.OpenApi.Mappers;
+using Nancy.OpenApi.Models;
+using Nancy.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -11,9 +15,10 @@ namespace Nancy.OpenApi.Modules
             Get["/api-docs"] = p => View["MissingComponent"];
         }
 
-        public OpenApiModule(ISwaggerGenerator swaggerGenerator)
+        public OpenApiModule(IApiDescription apiDescription, IRouteCacheProvider routeCacheProvider)
         {
-            _swaggerGenerator = swaggerGenerator;
+            _routeCacheProvider = routeCacheProvider;
+            _apiDescription = apiDescription;
 
             Get["/api-docs"] = p => View["Index"];
             Get["/swagger.json"] = p => GetSpecification();
@@ -21,11 +26,32 @@ namespace Nancy.OpenApi.Modules
 
         private Response GetSpecification()
         {
-            var swaggerObject = _swaggerGenerator.Generate();
+            var routeCache = _routeCacheProvider.GetCache();
+            var swaggerObject = _apiDescription.ToSwaggerObject();
+
+            var routes = routeCache.Where(r => r.Key != typeof(OpenApiModule))
+                .SelectMany(r => r.Value.Select(x => x.Item2))
+                .ToLookup(x => x.Path);
+
+            foreach (var routeDescription in routes)
+            {
+                var pathItem = new PathItemObject { Path = routeDescription.Key };
+
+                foreach (var route in routeDescription.ToList())
+                {
+                    var metadata = route.Metadata.Retrieve<OpenApiRouteMetadata>();
+                    var operationObject = metadata?.ToOperationObject();
+
+                    if (operationObject != null)
+                        pathItem[route.Method] = operationObject;
+                }
+
+                swaggerObject.Paths[routeDescription.Key] = pathItem;
+            }
+
             var response = (Response)JsonConvert.SerializeObject(swaggerObject, new JsonSerializerSettings
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                NullValueHandling = NullValueHandling.Ignore
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
 
             response.ContentType = "application/json";
@@ -33,6 +59,7 @@ namespace Nancy.OpenApi.Modules
             return response;
         }
 
-        private readonly ISwaggerGenerator _swaggerGenerator;
+        private readonly IApiDescription _apiDescription;
+        private readonly IRouteCacheProvider _routeCacheProvider;
     }
 }

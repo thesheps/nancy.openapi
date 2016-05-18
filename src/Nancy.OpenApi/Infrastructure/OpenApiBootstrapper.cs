@@ -19,6 +19,7 @@ namespace Nancy.OpenApi.Infrastructure
         protected override void ConfigureConventions(NancyConventions conventions)
         {
             base.ConfigureConventions(conventions);
+            conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("SwaggerUi/", viewName));
 
             foreach (var assembly in AppDomainAssemblyTypeScanner.Assemblies)
             {
@@ -38,7 +39,7 @@ namespace Nancy.OpenApi.Infrastructure
             var assembly = typeof(OpenApiModule).Assembly;
 
             if (!ResourceViewLocationProvider.RootNamespaces.ContainsKey(assembly))
-                ResourceViewLocationProvider.RootNamespaces.Add(assembly, "Nancy.OpenApi.views");
+                ResourceViewLocationProvider.RootNamespaces.Add(assembly, "Nancy.OpenApi.SwaggerUi");
         }
 
         private static void MapResourcesFromAssembly(NancyConventions conventions, Assembly assembly)

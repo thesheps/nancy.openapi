@@ -107,10 +107,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ModuleMetadata.cs" />
-    <Compile Include="Infrastructure\RouteMetadata.cs" />
+    <Compile Include="Infrastructure\OpenApiModuleMetadata.cs" />
+    <Compile Include="Infrastructure\OpenApiRouteMetadata.cs" />
     <Compile Include="Infrastructure\OpenApiBootstrapper.cs" />
     <Compile Include="Infrastructure\OpenApiRouteMetadataProvider.cs" />
+    <Compile Include="Mappers\RouteMapper.cs" />
     <Compile Include="Models\ContactObject.cs" />
     <Compile Include="Models\DefinitionsObject.cs" />
     <Compile Include="Models\ExampleObject.cs" />
@@ -135,63 +136,62 @@
     <Compile Include="Models\SwaggerObject.cs" />
     <Compile Include="Models\TagObject.cs" />
     <Compile Include="Infrastructure\IApiDescription.cs" />
-    <Compile Include="Infrastructure\SwaggerGenerator.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
-    <Compile Include="Mappers\SwaggerMapper.cs" />
+    <Compile Include="Mappers\ApiMapper.cs" />
     <None Include="app.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="fonts\DroidSans-Bold.ttf" />
-    <EmbeddedResource Include="fonts\DroidSans.ttf" />
-    <EmbeddedResource Include="lib\underscore-min.map" />
+    <EmbeddedResource Include="SwaggerUi\fonts\DroidSans-Bold.ttf" />
+    <EmbeddedResource Include="SwaggerUi\fonts\DroidSans.ttf" />
+    <EmbeddedResource Include="SwaggerUi\lib\underscore-min.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="css\print.css" />
-    <EmbeddedResource Include="css\reset.css" />
-    <EmbeddedResource Include="css\screen.css" />
-    <EmbeddedResource Include="css\style.css" />
-    <EmbeddedResource Include="css\typography.css" />
-    <EmbeddedResource Include="images\collapse.gif" />
-    <EmbeddedResource Include="images\expand.gif" />
-    <EmbeddedResource Include="images\explorer_icons.png" />
-    <EmbeddedResource Include="images\favicon-16x16.png" />
-    <EmbeddedResource Include="images\favicon-32x32.png" />
-    <EmbeddedResource Include="images\favicon.ico" />
-    <EmbeddedResource Include="images\logo_small.png" />
-    <EmbeddedResource Include="images\pet_store_api.png" />
-    <EmbeddedResource Include="images\throbber.gif" />
-    <EmbeddedResource Include="images\wordnik_api.png" />
-    <EmbeddedResource Include="views\index.html" />
-    <EmbeddedResource Include="lang\en.js" />
-    <EmbeddedResource Include="lang\es.js" />
-    <EmbeddedResource Include="lang\fr.js" />
-    <EmbeddedResource Include="lang\it.js" />
-    <EmbeddedResource Include="lang\ja.js" />
-    <EmbeddedResource Include="lang\pl.js" />
-    <EmbeddedResource Include="lang\pt.js" />
-    <EmbeddedResource Include="lang\ru.js" />
-    <EmbeddedResource Include="lang\tr.js" />
-    <EmbeddedResource Include="lang\translator.js" />
-    <EmbeddedResource Include="lang\zh-cn.js" />
-    <EmbeddedResource Include="lib\backbone-min.js" />
-    <EmbeddedResource Include="lib\handlebars-2.0.0.js" />
-    <EmbeddedResource Include="lib\highlight.7.3.pack.js" />
-    <EmbeddedResource Include="lib\jquery-1.8.0.min.js" />
-    <EmbeddedResource Include="lib\jquery.ba-bbq.min.js" />
-    <EmbeddedResource Include="lib\jquery.slideto.min.js" />
-    <EmbeddedResource Include="lib\jquery.wiggle.min.js" />
-    <EmbeddedResource Include="lib\jsoneditor.min.js" />
-    <EmbeddedResource Include="lib\marked.js" />
-    <EmbeddedResource Include="lib\swagger-oauth.js" />
-    <EmbeddedResource Include="lib\underscore-min.js" />
-    <EmbeddedResource Include="views\o2c.html" />
-    <EmbeddedResource Include="lib\swagger-ui.js" />
-    <EmbeddedResource Include="lib\swagger-ui.min.js" />
+    <EmbeddedResource Include="SwaggerUi\css\print.css" />
+    <EmbeddedResource Include="SwaggerUi\css\reset.css" />
+    <EmbeddedResource Include="SwaggerUi\css\screen.css" />
+    <EmbeddedResource Include="SwaggerUi\css\style.css" />
+    <EmbeddedResource Include="SwaggerUi\css\typography.css" />
+    <EmbeddedResource Include="SwaggerUi\images\collapse.gif" />
+    <EmbeddedResource Include="SwaggerUi\images\expand.gif" />
+    <EmbeddedResource Include="SwaggerUi\images\explorer_icons.png" />
+    <EmbeddedResource Include="SwaggerUi\images\favicon-16x16.png" />
+    <EmbeddedResource Include="SwaggerUi\images\favicon-32x32.png" />
+    <EmbeddedResource Include="SwaggerUi\images\favicon.ico" />
+    <EmbeddedResource Include="SwaggerUi\images\logo_small.png" />
+    <EmbeddedResource Include="SwaggerUi\images\pet_store_api.png" />
+    <EmbeddedResource Include="SwaggerUi\images\throbber.gif" />
+    <EmbeddedResource Include="SwaggerUi\images\wordnik_api.png" />
+    <EmbeddedResource Include="SwaggerUi\index.html" />
+    <EmbeddedResource Include="SwaggerUi\lang\en.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\es.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\fr.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\it.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\ja.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\pl.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\pt.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\ru.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\tr.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\translator.js" />
+    <EmbeddedResource Include="SwaggerUi\lang\zh-cn.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\backbone-min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\handlebars-2.0.0.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\highlight.7.3.pack.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\jquery-1.8.0.min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\jquery.ba-bbq.min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\jquery.slideto.min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\jquery.wiggle.min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\jsoneditor.min.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\marked.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\swagger-oauth.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\underscore-min.js" />
+    <EmbeddedResource Include="SwaggerUi\o2c.html" />
+    <EmbeddedResource Include="SwaggerUi\lib\swagger-ui.js" />
+    <EmbeddedResource Include="SwaggerUi\lib\swagger-ui.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="views\missingcomponent.html" />
+    <EmbeddedResource Include="SwaggerUi\missingcomponent.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
