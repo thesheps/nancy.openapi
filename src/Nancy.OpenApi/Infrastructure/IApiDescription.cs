@@ -1,8 +1,7 @@
 namespace Nancy.OpenApi.Infrastructure
 {
     /// <summary>
-    /// Describes an Api from the top-level. A simplistic implementation could derive the values
-    /// using resource files.
+    /// Describes an Api from the top-level. A simplistic implementation could derive the values using resource files.
     /// </summary>
     public interface IApiDescription
     {
