@@ -1,18 +1,18 @@
 ﻿namespace Nancy.OpenApi.Models
 {
-    public class InfoObject
+    public class Info
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public string TermsOfService { get; set; }
         public string Version { get; set; }
-        public ContactObject Contact { get; set; }
-        public LicenceObject Licence { get; set; }
+        public Contact Contact { get; set; }
+        public License Licence { get; set; }
 
-        public InfoObject()
+        public Info()
         {
-            Contact = new ContactObject();
-            Licence = new LicenceObject();
+            Contact = new Contact();
+            Licence = new License();
         }
     }
 }

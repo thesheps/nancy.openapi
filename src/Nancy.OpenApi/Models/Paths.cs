@@ -2,7 +2,7 @@
 
 namespace Nancy.OpenApi.Models
 {
-    public class DefinitionsObject : Dictionary<string, SchemaObject>
-    { 
+    public class Paths : Dictionary<string, PathItem>
+    {
     }
 }

@@ -1,15 +1,15 @@
 namespace Nancy.OpenApi.Models
 {
-    public class HeaderObject
+    public class Header
     {
         public string Description { get; set; }
         public string Type { get; set; }
         public string Format { get; set; }
-        public ItemsObject Items { get; set; }
+        public Items Items { get; set; }
 
-        public HeaderObject()
+        public Header()
         {
-            Items = new ItemsObject();
+            Items = new Items();
         }
     }
 }

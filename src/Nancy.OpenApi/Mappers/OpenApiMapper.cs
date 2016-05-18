@@ -1,30 +1,29 @@
-using Nancy.OpenApi.Infrastructure;
 using Nancy.OpenApi.Models;
 
 namespace Nancy.OpenApi.Mappers
 {
-    public static class ApiMapper
+    public static class OpenApiMapper
     {
-        public static SwaggerObject ToSwaggerObject(this IApiDescription apiDescription)
+        public static ApiSpecification ToApiSpecification(this IApiDescription apiDescription)
         {
-            return new SwaggerObject
+            return new ApiSpecification
             {
-                ExternalDocs = new ExternalDocsObject
+                ExternalDocs = new ExternalDocs
                 {
                     Description  = apiDescription.ExternalDocsDescription,
                     Url = apiDescription.ExternalDocsUrl
                 },
-                Info = new InfoObject
+                Info = new Info
                 {
                     Title = apiDescription.Title,
                     Description = apiDescription.Description,
-                    Contact = new ContactObject
+                    Contact = new Contact
                     {
                         Email = apiDescription.ContactEmail,
                         Name = apiDescription.ContactName,
                         Url = apiDescription.ContactUrl
                     },
-                    Licence = new LicenceObject
+                    Licence = new License
                     {
                         Name = apiDescription.LicenseName,
                         Url = apiDescription.LicenseUrl

@@ -27,7 +27,7 @@ namespace Nancy.OpenApi.Modules
         private Response GetSpecification()
         {
             var routeCache = _routeCacheProvider.GetCache();
-            var swaggerObject = _apiDescription.ToSwaggerObject();
+            var swaggerObject = _apiDescription.ToApiSpecification();
 
             var routes = routeCache.Where(r => r.Key != typeof(OpenApiModule))
                 .SelectMany(r => r.Value.Select(x => x.Item2))
@@ -35,7 +35,7 @@ namespace Nancy.OpenApi.Modules
 
             foreach (var routeDescription in routes)
             {
-                var pathItem = new PathItemObject { Path = routeDescription.Key };
+                var pathItem = new PathItem { Path = routeDescription.Key };
 
                 foreach (var route in routeDescription.ToList())
                 {

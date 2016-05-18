@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Nancy.OpenApi.Infrastructure
+namespace Nancy.OpenApi
 {
     /// <summary>
     /// Create implementations of this class in order to add metadata to an existing Nancy route/path.

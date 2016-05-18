@@ -1,6 +1,6 @@
 namespace Nancy.OpenApi.Models
 {
-    public class SecurityDefinitionsObject
+    public class SecurityDefinitions
     {
     }
 }

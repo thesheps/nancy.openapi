@@ -2,9 +2,9 @@
 
 namespace Nancy.OpenApi.Models
 {
-    public class SchemaObject
+    public class Schema
     {
-        public Dictionary<string, PropertyObject> Properties { get; set; }
+        public Dictionary<string, Property> Properties { get; set; }
         public string Type { get; set; }
     }
 }

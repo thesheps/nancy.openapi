@@ -1,4 +1,4 @@
-namespace Nancy.OpenApi.Infrastructure
+namespace Nancy.OpenApi
 {
     /// <summary>
     /// Describes an Api from the top-level. A simplistic implementation could derive the values using resource files.

@@ -23,7 +23,7 @@ namespace Nancy.OpenApi.Tests
         {
             var browser = new Browser(new Infrastructure.Bootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
-            var specs = JsonConvert.DeserializeObject<Models.SwaggerObject>(response.Body.AsString());
+            var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
 
             Assert.That(specs, Is.Not.Null);
             Assert.That(specs.Swagger, Is.EqualTo("2.0"));
@@ -34,7 +34,7 @@ namespace Nancy.OpenApi.Tests
         {
             var browser = new Browser(new Infrastructure.Bootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
-            var specs = JsonConvert.DeserializeObject<Models.SwaggerObject>(response.Body.AsString());
+            var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
             var path = specs.Paths["/api/test"];
 
             Assert.That(specs, Is.Not.Null);

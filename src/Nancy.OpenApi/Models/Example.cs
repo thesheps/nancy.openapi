@@ -1,6 +1,6 @@
 namespace Nancy.OpenApi.Models
 {
-    public class ItemsObject
+    public class Example
     {
     }
 }

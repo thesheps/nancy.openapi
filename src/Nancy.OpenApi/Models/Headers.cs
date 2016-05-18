@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Nancy.OpenApi.Models
 {
-    public class HeadersObject : Dictionary<string, HeaderObject>
+    public class Headers : Dictionary<string, Header>
     {
     }
 }

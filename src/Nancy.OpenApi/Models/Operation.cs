@@ -2,7 +2,7 @@
 
 namespace Nancy.OpenApi.Models
 {
-    public class OperationObject
+    public class Operation
     {
         public List<string> Tags { get; set; }
         public List<string> Consumes { get; set; }
@@ -11,7 +11,7 @@ namespace Nancy.OpenApi.Models
         public string Description { get; set; }
         public string OperationId { get; set; }
 
-        public OperationObject()
+        public Operation()
         {
             Tags = new List<string>();
             Consumes = new List<string>();
