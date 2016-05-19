@@ -26,7 +26,7 @@ namespace Nancy.OpenApi.Modules
         private Response GetSpecification()
         {
             var routeCache = _routeCacheProvider.GetCache();
-            var swaggerObject = _apiDescription.ToApiSpecification();
+            var apiSpecification = _apiDescription.ToApiSpecification();
 
             var routes = routeCache.Where(r => r.Key != typeof(OpenApiModule))
                 .SelectMany(r => r.Value.Select(x => x.Item2))
@@ -39,16 +39,16 @@ namespace Nancy.OpenApi.Modules
                 foreach (var route in routeDescription.ToList())
                 {
                     var metadata = route.Metadata.Retrieve<PathMetadata>();
-                    var operationObject = metadata == null ? new Operation { Description = string.Empty } : metadata.ToOperation();
+                    var operationObject = metadata == null ? new Operation { Description = route.Description } : metadata.ToOperation();
 
                     if (operationObject != null)
                         pathItem[route.Method] = operationObject;
                 }
 
-                swaggerObject.Paths[routeDescription.Key] = pathItem;
+                apiSpecification.Paths[routeDescription.Key] = pathItem;
             }
 
-            var response = (Response)JsonConvert.SerializeObject(swaggerObject, new JsonSerializerSettings
+            var response = (Response)JsonConvert.SerializeObject(apiSpecification, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });

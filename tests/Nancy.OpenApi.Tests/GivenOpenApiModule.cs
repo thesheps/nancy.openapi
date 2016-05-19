@@ -1,5 +1,4 @@
-﻿using Nancy.OpenApi.Infrastructure;
-using Nancy.OpenApi.Models;
+﻿using Nancy.OpenApi.Models;
 using Nancy.OpenApi.Tests.Fakes;
 using Nancy.Testing;
 using Newtonsoft.Json;

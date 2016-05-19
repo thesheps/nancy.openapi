@@ -7,22 +7,15 @@
     <authors>Chris Shepherd</authors>
     <owners>Chris Shepherd</owners>
     <iconUrl>https://raw.githubusercontent.com/thesheps/nancy.openapi/master/nuget-icon.png</iconUrl>
+    <projectUrl>https://github.com/thesheps/nancy.openapi</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Automagic OpenApi documentation generation for Nancy.</description>
     <releaseNotes></releaseNotes>
     <tags>nancy swagger openapi documentation api metadata web</tags>
 
     <dependencies>
-      <dependency id="Microsoft.AspNet.Mvc" version="5.2.3" />
-      <dependency id="Microsoft.AspNet.Razor" version="3.2.3" />
-      <dependency id="Microsoft.AspNet.WebPages" version="3.2.3" />
-      <dependency id="Microsoft.Web.Infrastructure" version="1.0.0.0" />
       <dependency id="Nancy" version="1.2.0" />
-      <dependency id="Nancy.Hosting.Self" version="1.2.0" />
       <dependency id="Nancy.Hosting.Aspnet" version="1.2.0" />
-      <dependency id="Microsoft.AspNet.SignalR.Core" version="2.2.0" />
-      <dependency id="Microsoft.Owin" version="3.0.1" />
-      <dependency id="Microsoft.Owin.Host.SystemWeb" version="3.0.1" />
       <dependency id="Newtonsoft.Json" version="8.0.2" />
     </dependencies>
   </metadata>
