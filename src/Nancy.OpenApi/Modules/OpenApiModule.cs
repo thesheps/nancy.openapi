@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Nancy.OpenApi.Infrastructure;
 using Nancy.OpenApi.Mappers;
 using Nancy.OpenApi.Models;
 using Nancy.Routing;
@@ -40,7 +39,7 @@ namespace Nancy.OpenApi.Modules
                 foreach (var route in routeDescription.ToList())
                 {
                     var metadata = route.Metadata.Retrieve<PathMetadata>();
-                    var operationObject = metadata?.ToOperationObject();
+                    var operationObject = metadata == null ? new Operation { Description = string.Empty } : metadata.ToOperation();
 
                     if (operationObject != null)
                         pathItem[route.Method] = operationObject;

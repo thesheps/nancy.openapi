@@ -4,7 +4,7 @@ namespace Nancy.OpenApi.Mappers
 {
     public static class RouteMapper
     {
-        public static Operation ToOperationObject(this PathMetadata routeMetadata)
+        public static Operation ToOperation(this PathMetadata routeMetadata)
         {
             return new Operation
             {
