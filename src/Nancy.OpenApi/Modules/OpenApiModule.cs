@@ -39,10 +39,10 @@ namespace Nancy.OpenApi.Modules
                 foreach (var route in routeDescription.ToList())
                 {
                     var metadata = route.Metadata.Retrieve<PathMetadata>();
-                    var operationObject = metadata == null ? new Operation { Description = route.Description } : metadata.ToOperation();
+                    var operation = metadata == null ? new Operation { Description = route.Description } : metadata.ToOperation();
 
-                    if (operationObject != null)
-                        pathItem[route.Method] = operationObject;
+                    if (operation != null)
+                        pathItem[route.Method] = operation;
                 }
 
                 apiSpecification.Paths[routeDescription.Key] = pathItem;

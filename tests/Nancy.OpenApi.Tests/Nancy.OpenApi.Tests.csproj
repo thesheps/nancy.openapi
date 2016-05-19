@@ -64,6 +64,11 @@
     <Compile Include="Fakes\FakeApiDescription.cs" />
     <Compile Include="Fakes\FakeModule.cs" />
     <Compile Include="Fakes\FakeMetadata.cs" />
+    <Compile Include="Fakes\FakeModuleResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FakeModuleResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="GivenOpenApiModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +81,12 @@
       <Project>{f3f461b3-2fc8-4704-9a8e-7b9a490668c9}</Project>
       <Name>Nancy.OpenApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fakes\FakeModuleResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FakeModuleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

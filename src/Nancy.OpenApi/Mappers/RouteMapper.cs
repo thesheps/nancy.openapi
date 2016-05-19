@@ -13,7 +13,8 @@ namespace Nancy.OpenApi.Mappers
                 Tags = routeMetadata.Tags,
                 Produces = routeMetadata.Produces,
                 Consumes = routeMetadata.Consumes,
-                OperationId = routeMetadata.OperationId
+                OperationId = routeMetadata.OperationId,
+                Parameters = routeMetadata.Parameters
             };
         }
     }

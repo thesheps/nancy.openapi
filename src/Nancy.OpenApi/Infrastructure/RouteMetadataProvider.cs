@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Nancy.Routing;
 using Nancy.TinyIoc;
@@ -23,21 +24,37 @@ namespace Nancy.OpenApi.Infrastructure
         public object GetMetadata(INancyModule module, RouteDescription routeDescription)
         {
             var type = GetModuleMetadataType(module);
-            var moduleMetadata = (ModuleMetadata)(type == null ? null : _container.Resolve(type));
 
-            return moduleMetadata?[routeDescription.Method, routeDescription.Path];
+            if (type == null) return null;
+
+            ModuleMetadata metadata;
+            if (MetadataItems.TryGetValue(type, out metadata))
+                return metadata[routeDescription.Method, routeDescription.Path];
+
+            metadata = (ModuleMetadata)(_container.Resolve(type));
+            MetadataItems.Add(type, metadata);
+
+            return metadata?[routeDescription.Method, routeDescription.Path];
         }
 
         private static Type GetModuleMetadataType(INancyModule module)
         {
-            var metadataModuleName = module.GetType().Name.Replace("Module", "Metadata");
-            var type = AppDomain.CurrentDomain.GetAssemblies()
-                                .SelectMany(x => x.GetTypes())
-                                .FirstOrDefault(x => x.Name == metadataModuleName);
+            var metadataName = module.GetType().Name.Replace("Module", "Metadata");
+
+            Type type;
+            if (ModuleTypes.TryGetValue(metadataName, out type)) return type;
+
+            type = AppDomain.CurrentDomain.GetAssemblies()
+                            .SelectMany(x => x.GetTypes())
+                            .FirstOrDefault(x => x.Name == metadataName);
+
+            ModuleTypes.Add(metadataName, type);
 
             return typeof(ModuleMetadata).IsAssignableFrom(type) ? type : null;
         }
 
+        private static readonly Dictionary<string, Type> ModuleTypes = new Dictionary<string, Type>(); 
+        private static readonly Dictionary<Type, ModuleMetadata> MetadataItems = new Dictionary<Type, ModuleMetadata>();
         private readonly TinyIoCContainer _container;
     }
 }

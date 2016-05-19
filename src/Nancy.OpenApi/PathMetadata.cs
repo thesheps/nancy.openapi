@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Nancy.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace Nancy.OpenApi
 {
@@ -13,6 +15,12 @@ namespace Nancy.OpenApi
         public List<string> Consumes { get; set; }
         public List<string> Produces { get; set; }
         public List<string> Tags { get; set; }
-        public Dictionary<string, string> Responses { get; set; }
+        public List<Parameter> Parameters { get; set; }
+        public Dictionary<string, Models.Response> Responses { get; set; }
+
+        public static PathMetadata FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<PathMetadata>(json);
+        }
     }
 }

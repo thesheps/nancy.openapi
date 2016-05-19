@@ -47,11 +47,27 @@ namespace Nancy.OpenApi.Tests
             Assert.That(specs.Info.TermsOfService, Is.EqualTo(_apiDescription.TermsOfService));
             Assert.That(specs.Info.Title, Is.EqualTo(_apiDescription.Title));
             Assert.That(specs.Info.Version, Is.EqualTo(_apiDescription.Version));
-
             Assert.That(path, Is.Not.Null);
-            Assert.That(path["post"].Description, Is.EqualTo(_metadata.PostMetadata.Description));
-            Assert.That(path["post"].Summary, Is.EqualTo(_metadata.PostMetadata.Summary));
-            Assert.That(path["post"].OperationId, Is.EqualTo(_metadata.PostMetadata.OperationId));
+
+            var postPath = path["post"];
+            Assert.That(postPath.Description, Is.EqualTo(_metadata.PostMetadata.Description));
+            Assert.That(postPath.Summary, Is.EqualTo(_metadata.PostMetadata.Summary));
+            Assert.That(postPath.OperationId, Is.EqualTo(_metadata.PostMetadata.OperationId));
+
+            var getPath = path["get"];
+            Assert.That(getPath.Description, Is.EqualTo(_metadata.GetMetadata.Description));
+            Assert.That(getPath.OperationId, Is.EqualTo(_metadata.GetMetadata.OperationId));
+
+            var p1 = getPath.Parameters[0];
+            var p2 = _metadata.GetMetadata.Parameters[0];
+            Assert.That(p1.Description, Is.EqualTo(p2.Description));
+            Assert.That(p1.In, Is.EqualTo(p2.In));
+            Assert.That(p1.Name, Is.EqualTo(p2.Name));
+            Assert.That(p1.Required, Is.EqualTo(p2.Required));
+            Assert.That(p1.Schema.Type, Is.EqualTo(p2.Schema.Type));
+            Assert.That(p1.Schema.Properties, Is.EqualTo(p2.Schema.Properties));
+
+            Assert.That(getPath.Summary, Is.EqualTo(_metadata.GetMetadata.Summary));
         }
 
         private readonly IApiDescription _apiDescription = new FakeApiDescription();
