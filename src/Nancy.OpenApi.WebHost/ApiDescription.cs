@@ -1,6 +1,4 @@
-﻿using Nancy.OpenApi.Infrastructure;
-
-namespace Nancy.OpenApi.WebHost
+﻿namespace Nancy.OpenApi.WebHost
 {
     /// <summary>
     /// Simple IApiDescription implementation which derives its values from a resource file.
