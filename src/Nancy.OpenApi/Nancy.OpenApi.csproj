@@ -107,8 +107,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ModuleMetadata.cs" />
-    <Compile Include="Infrastructure\PathMetadata.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\RouteMetadataProvider.cs" />
     <Compile Include="Mappers\OpenApiMapper.cs" />
