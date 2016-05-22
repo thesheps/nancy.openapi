@@ -4,7 +4,7 @@ namespace Nancy.OpenApi.Tests.Fakes
 {
     public class FakeMetadata : ModuleMetadata
     {
-        public PathMetadata GetMetadata = PathMetadata.FromJson(FakeModuleResources.GetApiTest);
+        public PathMetadata GetMetadata = FakeModuleResources.GetApiTest;
 
         public PathMetadata PostMetadata = new PathMetadata
         {

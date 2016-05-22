@@ -18,9 +18,14 @@ namespace Nancy.OpenApi
         public List<Parameter> Parameters { get; set; }
         public Dictionary<string, Models.Response> Responses { get; set; }
 
-        public static PathMetadata FromJson(string json)
+        public static implicit operator string(PathMetadata metadata)
         {
-            return JsonConvert.DeserializeObject<PathMetadata>(json);
+            return JsonConvert.SerializeObject(metadata);
+        }
+
+        public static implicit operator PathMetadata(string metadata)
+        {
+            return JsonConvert.DeserializeObject<PathMetadata>(metadata);
         }
     }
 }

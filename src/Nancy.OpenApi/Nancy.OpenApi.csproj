@@ -140,6 +140,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="IApiDescription.cs" />
     <Compile Include="ModuleMetadata.cs" />
+    <Compile Include="Modules\ApiSpecificationFactory.cs" />
     <Compile Include="Modules\OpenApiModule.cs" />
     <None Include="app.config" />
     <Compile Include="PathMetadata.cs" />
