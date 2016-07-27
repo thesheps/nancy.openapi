@@ -38,6 +38,7 @@ namespace Nancy.OpenApi.Tests
 
             Assert.That(specs, Is.Not.Null);
             Assert.That(specs.Swagger, Is.EqualTo("2.0"));
+            Assert.That(specs.BasePath, Is.EqualTo(_apiDescription.BasePath));
             Assert.That(specs.Info.Contact.Name, Is.EqualTo(_apiDescription.ContactName));
             Assert.That(specs.Info.Contact.Email, Is.EqualTo(_apiDescription.ContactEmail));
             Assert.That(specs.Info.Contact.Url, Is.EqualTo(_apiDescription.ContactUrl));
