@@ -16,5 +16,6 @@
         public string Version => Resources.Version;
         public string ExternalDocsDescription => Resources.ExternalDocsDescription;
         public string ExternalDocsUrl => Resources.ExternalDocsUrl;
+        public string BasePath => Resources.BasePath;
     }
 }

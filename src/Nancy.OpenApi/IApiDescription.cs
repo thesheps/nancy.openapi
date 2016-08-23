@@ -16,5 +16,6 @@ namespace Nancy.OpenApi
         string Version { get; }
         string ExternalDocsDescription { get; }
         string ExternalDocsUrl { get; }
+        string BasePath { get; }
     }
 }

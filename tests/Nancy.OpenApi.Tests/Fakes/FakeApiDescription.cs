@@ -15,5 +15,6 @@ namespace Nancy.OpenApi.Tests.Fakes
         public string Version => "1.0";
         public string ExternalDocsDescription => "Wiki community article";
         public string ExternalDocsUrl => "www.testdocs";
+        public string BasePath => "v2";
     }
 }

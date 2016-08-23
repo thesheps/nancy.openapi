@@ -61,6 +61,15 @@ namespace Nancy.OpenApi.WebHost {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to v2.
+        /// </summary>
+        internal static string BasePath {
+            get {
+                return ResourceManager.GetString("BasePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to joe.bloggs@somewhere.com.
         /// </summary>
         internal static string ContactEmail {

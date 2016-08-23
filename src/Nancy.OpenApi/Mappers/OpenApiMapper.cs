@@ -30,7 +30,8 @@ namespace Nancy.OpenApi.Mappers
                     },
                     TermsOfService = apiDescription.TermsOfService,
                     Version = apiDescription.Version
-                }
+                },
+                BasePath = apiDescription.BasePath
             };
         }
     }
