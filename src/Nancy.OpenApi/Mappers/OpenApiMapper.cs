@@ -10,7 +10,7 @@ namespace Nancy.OpenApi.Mappers
             {
                 ExternalDocs = new ExternalDocs
                 {
-                    Description  = apiDescription.ExternalDocsDescription,
+                    Description = apiDescription.ExternalDocsDescription,
                     Url = apiDescription.ExternalDocsUrl
                 },
                 Info = new Info
@@ -30,7 +30,10 @@ namespace Nancy.OpenApi.Mappers
                     },
                     TermsOfService = apiDescription.TermsOfService,
                     Version = apiDescription.Version
-                }
+                },
+                BasePath = apiDescription.BasePath.StartsWith("/")
+                    ? apiDescription.BasePath
+                    : '/' + apiDescription.BasePath
             };
         }
     }

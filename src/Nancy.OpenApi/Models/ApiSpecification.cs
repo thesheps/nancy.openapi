@@ -5,7 +5,7 @@ namespace Nancy.OpenApi.Models
     public class ApiSpecification
     {
         public string Swagger => "2.0";
-        public string BasePath => "v2";
+        public string BasePath { get; set; }
         public string Host { get; set; }
         public List<string> Schemes { get; set; }
         public List<string> Consumes { get; set; }
