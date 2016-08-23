@@ -18,7 +18,7 @@ namespace Nancy.OpenApi.Tests
         }
 
         [Test]
-        public void WhenIMakeSpecificationRequestOnDefaultRoute_ThenJsonSpecificationIsRetrieved()
+        public void WhenIHaveAModuleWithConfiguredRoutes_ThenBasePathIsConfiguredCorrectly()
         {
             var browser = new Browser(new Infrastructure.Bootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
@@ -38,6 +38,7 @@ namespace Nancy.OpenApi.Tests
 
             Assert.That(specs, Is.Not.Null);
             Assert.That(specs.Swagger, Is.EqualTo("2.0"));
+            Assert.That(specs.BasePath, Is.EqualTo(_apiDescription.BasePath));
             Assert.That(specs.Info.Contact.Name, Is.EqualTo(_apiDescription.ContactName));
             Assert.That(specs.Info.Contact.Email, Is.EqualTo(_apiDescription.ContactEmail));
             Assert.That(specs.Info.Contact.Url, Is.EqualTo(_apiDescription.ContactUrl));
