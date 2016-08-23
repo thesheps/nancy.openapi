@@ -61,7 +61,7 @@ namespace Nancy.OpenApi.WebHost {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to v2.
+        ///   Looks up a localized string similar to v1.
         /// </summary>
         internal static string BasePath {
             get {
