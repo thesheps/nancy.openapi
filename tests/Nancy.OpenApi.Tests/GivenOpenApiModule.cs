@@ -18,7 +18,7 @@ namespace Nancy.OpenApi.Tests
         }
 
         [Test]
-        public void WhenIMakeSpecificationRequestOnDefaultRoute_ThenJsonSpecificationIsRetrieved()
+        public void WhenIHaveAModuleWithConfiguredRoutes_ThenBasePathIsConfiguredCorrectly()
         {
             var browser = new Browser(new Infrastructure.Bootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
