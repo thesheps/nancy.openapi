@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
-using Nancy.Hosting.Aspnet;
 using Nancy.OpenApi.Modules;
 using Nancy.Responses;
 using Nancy.TinyIoc;
@@ -12,13 +11,18 @@ using Nancy.ViewEngines;
 
 namespace Nancy.OpenApi.Infrastructure
 {
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public static class BootstrapperExtensions
     {
-        protected override IRootPathProvider RootPathProvider => new AspNetRootPathProvider();
-
-        protected override void ConfigureConventions(NancyConventions conventions)
+        public static NancyInternalConfiguration WithOpenApi(this NancyBootstrapperBase<TinyIoCContainer> bootstrapper, NancyConventions conventions, TinyIoCContainer container)
         {
-            base.ConfigureConventions(conventions);
+            conventions.WithOpenApi();
+            container.WithOpenApi();
+
+            return NancyInternalConfiguration.WithOverrides(nic => nic.ViewLocationProvider = typeof(ResourceViewLocationProvider));
+        }
+
+        public static void WithOpenApi(this NancyConventions conventions)
+        {
             conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("SwaggerUi/", viewName));
 
             foreach (var assembly in AppDomainAssemblyTypeScanner.Assemblies)
@@ -27,19 +31,17 @@ namespace Nancy.OpenApi.Infrastructure
             }
         }
 
-        protected override NancyInternalConfiguration InternalConfiguration
+        public static void WithOpenApi(this TinyIoCContainer container)
         {
-            get { return NancyInternalConfiguration.WithOverrides(nic => nic.ViewLocationProvider = typeof(ResourceViewLocationProvider)); }
-        }
-
-        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
-        {
-            base.ConfigureApplicationContainer(container);
-
             var assembly = typeof(OpenApiModule).Assembly;
 
             if (!ResourceViewLocationProvider.RootNamespaces.ContainsKey(assembly))
                 ResourceViewLocationProvider.RootNamespaces.Add(assembly, "Nancy.OpenApi.SwaggerUi");
+        }
+
+        public static NancyInternalConfiguration WithOpenApi(this NancyBootstrapperBase<TinyIoCContainer> bootstrapper)
+        {
+            return NancyInternalConfiguration.WithOverrides(nic => nic.ViewLocationProvider = typeof(ResourceViewLocationProvider));
         }
 
         private static void MapResourcesFromAssembly(NancyConventions conventions, Assembly assembly)

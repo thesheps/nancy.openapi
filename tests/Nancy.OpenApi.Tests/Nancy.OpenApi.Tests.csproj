@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestBootstrapper.cs" />
     <Compile Include="Fakes\FakeApiDescription.cs" />
     <Compile Include="Fakes\FakeModule.cs" />
     <Compile Include="Fakes\FakeMetadata.cs" />

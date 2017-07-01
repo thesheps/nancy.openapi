@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using Nancy.OpenApi.Mappers;
 using Nancy.OpenApi.Models;
+using Nancy.OpenApi.Modules;
 using Nancy.Routing;
 
-namespace Nancy.OpenApi.Modules
+namespace Nancy.OpenApi.Infrastructure
 {
     public interface IApiSpecificationFactory
     {

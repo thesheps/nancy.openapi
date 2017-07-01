@@ -11,7 +11,7 @@ namespace Nancy.OpenApi.Tests
         [Test]
         public void WhenIMakeDocumentationRequestOnDefaultRoute_ThenSwaggerDocumentationIsRendered()
         {
-            var browser = new Browser(new Infrastructure.Bootstrapper());
+            var browser = new Browser(new TestBootstrapper());
             var response = browser.Get("/api-docs", (with) => { with.HttpRequest(); });
 
             response.Body["#swagger-ui-container"].ShouldExistOnce();
@@ -20,7 +20,7 @@ namespace Nancy.OpenApi.Tests
         [Test]
         public void WhenIHaveAModuleWithConfiguredRoutes_ThenBasePathIsConfiguredCorrectly()
         {
-            var browser = new Browser(new Infrastructure.Bootstrapper());
+            var browser = new Browser(new TestBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
             var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
 
@@ -31,7 +31,7 @@ namespace Nancy.OpenApi.Tests
         [Test]
         public void WhenIHaveAModuleWithConfiguredRoutes_ThenApiSpecificationIsMappedCorrectly()
         {
-            var browser = new Browser(new Infrastructure.Bootstrapper());
+            var browser = new Browser(new TestBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
             var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
             var path = specs.Paths["/api/test"];
@@ -54,7 +54,7 @@ namespace Nancy.OpenApi.Tests
         [Test]
         public void WhenIHaveAModuleWithConfiguredRoutes_ThenManuallyMappedSpecificationIsCorrect()
         {
-            var browser = new Browser(new Infrastructure.Bootstrapper());
+            var browser = new Browser(new TestBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
             var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
             var path = specs.Paths["/api/test"];
@@ -68,7 +68,7 @@ namespace Nancy.OpenApi.Tests
         [Test]
         public void WhenIHaveAModuleWithConfiguredRoutes_ThenJsonMappedSpecificationIsCorrect()
         {
-            var browser = new Browser(new Infrastructure.Bootstrapper());
+            var browser = new Browser(new TestBootstrapper());
             var response = browser.Get("/swagger.json", (with) => { with.Header("Accept", "application/json"); });
             var specs = JsonConvert.DeserializeObject<ApiSpecification>(response.Body.AsString());
             var path = specs.Paths["/api/test"];

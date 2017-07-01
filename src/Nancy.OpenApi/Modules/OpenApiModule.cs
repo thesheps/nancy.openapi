@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Nancy.OpenApi.Infrastructure;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Nancy.OpenApi.Modules
