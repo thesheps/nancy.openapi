@@ -1,5 +1,3 @@
-using Nancy.OpenApi.Infrastructure;
-
 namespace Nancy.OpenApi.Tests.Fakes
 {
     public class FakeApiDescription : IApiDescription

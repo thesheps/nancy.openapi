@@ -6,6 +6,7 @@ namespace Nancy.OpenApi.Models
         public string In { get; set; }
         public string Description { get; set; }
         public string CollectionFormat { get; set; }
+        public string Type { get; set; }
         public bool Required { get; set; }
         public Schema Schema { get; set; }
 
