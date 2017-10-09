@@ -45,7 +45,7 @@ namespace Nancy.OpenApi.Infrastructure
             if (ModuleTypes.TryGetValue(metadataName, out type)) return type;
 
             type = AppDomain.CurrentDomain.GetAssemblies()
-                            .SelectMany(x => x.GetTypes())
+                            .SelectMany(x => x.SafeGetTypes())
                             .FirstOrDefault(x => x.Name == metadataName);
 
             ModuleTypes.Add(metadataName, type);
